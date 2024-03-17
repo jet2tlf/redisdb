@@ -1,0 +1,35 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: yarn install
+        
+      
+      - name: Build Project
+        run: yarn build
+
+      - name: Bundle files
+        run: |
+          sudo apt install zip
+          mkdir -p ./temp/redisdb
+          cp ./{LICENSE,README.md,fxmanifest.lua} ./temp/redisdb
+          cp -r ./dist ./temp/redisdb
+          cd ./temp && zip -r ../redisdb.zip ./redisdb
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: redisdb
+          path: redisdb.zip
