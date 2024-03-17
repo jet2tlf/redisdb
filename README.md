@@ -15,7 +15,9 @@ start redisdb
 ## Params
 
 ```key/s(*)``` is the key or keys that you want to use in the query, if you want to use more than one key you have to use an array of keys.
+
 ```values(depending)``` is the value or values that you want to set in an entry, if you want to use more than one value you have to use an array of values.
+
 ```callback(optional)``` is the function that will be called when the data or function is finished, if the callback is not specified the query will be executed and it will be as an await function.
 
 ## Examples
