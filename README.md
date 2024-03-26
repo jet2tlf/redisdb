@@ -57,3 +57,17 @@ Exists
 ```lua
 local result = exports["redisdb"]:exists("backpack"); -- OUTPUT: OK
 ```
+
+Subscribe
+
+```lua
+exports['redisdb']:subscribe('channel', function(data)
+    print(data)
+end)
+```
+
+Publish
+
+```lua
+exports['redisdb']:publish('channel', "very nice content")
+```
