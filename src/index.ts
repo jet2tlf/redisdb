@@ -7,6 +7,8 @@ import { expire } from "./query/expire";
 import { update } from "./query/update";
 import { reload } from "./query/reload";
 import { connect } from "./query/connect";
+import { publish } from "./pubsub/publish";
+import { subscribe } from "./pubsub/subscribe";
 
 import { createConnection } from "./database";
 
@@ -30,3 +32,5 @@ exports("expire", expire);
 exports("update", update);
 exports("reload", reload);
 exports("connect", connect);
+exports("publish", publish);
+exports("subscribe", subscribe);
