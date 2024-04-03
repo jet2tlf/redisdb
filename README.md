@@ -25,25 +25,31 @@ start redisdb
 Set
 
 ```lua
-local result = exports["redisdb"]:set("backpack", "blue"); -- OUTPUT: OK
+local result = exports["redisdb"]:set("backpack-blue", "blue"); -- OUTPUT: OK
 ```
 
 Update
 
 ```lua
-local result = exports["redisdb"]:update("backpack", "red"); -- OUTPUT: OK
+local result = exports["redisdb"]:update("backpack-blue", "red"); -- OUTPUT: OK
 ```
 
 Get
 
 ```lua
-local result = exports["redisdb"]:get("backpack"); -- OUTPUT: red
+local result = exports["redisdb"]:get("backpack-blue"); -- OUTPUT: red
+```
+
+MGet
+
+```lua
+local result = exports["redisdb"]:get({ "backpack-blue", "backpack-red" }); -- OUTPUT: TABLE
 ```
 
 Delete
 
 ```lua
-local result = exports["redisdb"]:del("backpack"); -- OUTPUT: OK
+local result = exports["redisdb"]:del("backpack-blue"); -- OUTPUT: OK
 ```
 
 Flush
@@ -55,7 +61,7 @@ local result = exports["redisdb"]:flushDb(); -- OUTPUT: OK
 Exists
 
 ```lua
-local result = exports["redisdb"]:exists("backpack"); -- OUTPUT: OK
+local result = exports["redisdb"]:exists("backpack-blue"); -- OUTPUT: OK
 ```
 
 Subscribe
@@ -70,4 +76,10 @@ Publish
 
 ```lua
 exports['redisdb']:publish('channel', "very nice content")
+```
+
+Keys
+
+```lua
+exports['redisdb']:keys('backpack-*') -- OUTPUT: TABLE
 ```

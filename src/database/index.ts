@@ -3,6 +3,10 @@ import { performance } from 'perf_hooks';
 
 export var redisClient: RedisClientType;
 
+/**
+ * Creates a connection to the Redis database using the provided credentials.
+ * @param credentials - The credentials for connecting to the Redis database.
+ */
 export async function createConnection(credentials: string) {
     if (credentials === "null") return console.error("^3Redis credentials not entered^7");
 
