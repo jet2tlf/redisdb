@@ -10,6 +10,7 @@ import { connect } from "./query/connect";
 import { publish } from "./pubsub/publish";
 import { subscribe } from "./pubsub/subscribe";
 import { keys } from "./query/keys";
+import { flushDb } from "./query/flush";
 
 import { createConnection } from "./database";
 
@@ -36,3 +37,4 @@ exports("connect", connect);
 exports("publish", publish);
 exports("subscribe", subscribe);
 exports("keys", keys);
+exports("flushDb", flushDb);
