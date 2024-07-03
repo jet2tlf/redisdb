@@ -9,9 +9,11 @@ import { redisClient } from "../database";
  * @param callback - An optional callback function to handle the result of the update operation.
  * @returns The result of the update operation, or the value returned by the callback function if provided.
  */
-export async function update(key: string, value: string, callback: (data: string | null) => any) {
+export async function update(key: string, value: any, callback: (data: string | null) => any) {
     ScheduleResourceTick(resourceName)
     try {
+        if (typeof value === "object" || Array.isArray(value)) value = JSON.stringify(value);
+        
         const result = await redisClient.set(key, value, { XX: true });
         return callback ? callback(result) : result;
     } catch (error: any) {
